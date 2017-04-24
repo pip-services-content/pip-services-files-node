@@ -9,7 +9,7 @@ import { FilesController } from '../logic/FilesController';
 import { FilesHttpServiceV1 } from '../services/version1/FilesHttpServiceV1';
 import { FilesSenecaServiceV1 } from '../services/version1/FilesSenecaServiceV1'; 
 
-export class FilesFactory extends Factory {
+export class FilesServiceFactory extends Factory {
 	public static Descriptor = new Descriptor("pip-services-files", "factory", "default", "default", "1.0");
 
 	public static MemoryPersistenceDescriptor = new Descriptor("pip-services-files", "persistence", "memory", "*", "1.0");
@@ -21,12 +21,12 @@ export class FilesFactory extends Factory {
 	
 	constructor() {
 		super();
-		this.registerAsType(FilesFactory.MemoryPersistenceDescriptor, FilesMemoryPersistence);
-		this.registerAsType(FilesFactory.FilePersistenceDescriptor, FilesFilePersistence);
-		this.registerAsType(FilesFactory.MongoDbPersistenceDescriptor, FilesMongoDbPersistence);
-		this.registerAsType(FilesFactory.ControllerDescriptor, FilesController);
-		this.registerAsType(FilesFactory.SenecaServiceDescriptor, FilesSenecaServiceV1);
-		this.registerAsType(FilesFactory.HttpServiceDescriptor, FilesHttpServiceV1);
+		this.registerAsType(FilesServiceFactory.MemoryPersistenceDescriptor, FilesMemoryPersistence);
+		this.registerAsType(FilesServiceFactory.FilePersistenceDescriptor, FilesFilePersistence);
+		this.registerAsType(FilesServiceFactory.MongoDbPersistenceDescriptor, FilesMongoDbPersistence);
+		this.registerAsType(FilesServiceFactory.ControllerDescriptor, FilesController);
+		this.registerAsType(FilesServiceFactory.SenecaServiceDescriptor, FilesSenecaServiceV1);
+		this.registerAsType(FilesServiceFactory.HttpServiceDescriptor, FilesHttpServiceV1);
 	}
 	
 }

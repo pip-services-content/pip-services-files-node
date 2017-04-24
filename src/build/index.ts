@@ -1,1 +1,1 @@
-export { FilesFactory } from './FilesFactory';
+export { FilesServiceFactory } from './FilesServiceFactory';

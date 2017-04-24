@@ -1,5 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var FilesFactory_1 = require("./FilesFactory");
-exports.FilesFactory = FilesFactory_1.FilesFactory;
+var FilesServiceFactory_1 = require("./FilesServiceFactory");
+exports.FilesServiceFactory = FilesServiceFactory_1.FilesServiceFactory;
 //# sourceMappingURL=index.js.map

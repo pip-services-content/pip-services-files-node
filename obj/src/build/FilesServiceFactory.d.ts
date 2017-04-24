@@ -1,6 +1,6 @@
 import { Factory } from 'pip-services-commons-node';
 import { Descriptor } from 'pip-services-commons-node';
-export declare class FilesFactory extends Factory {
+export declare class FilesServiceFactory extends Factory {
     static Descriptor: Descriptor;
     static MemoryPersistenceDescriptor: Descriptor;
     static FilePersistenceDescriptor: Descriptor;
