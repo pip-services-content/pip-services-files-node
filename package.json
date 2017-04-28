@@ -42,7 +42,7 @@
         "pip-services-container-node": "^2.0.0",
         "pip-services-data-node": "^2.0.0",
         "pip-services-net-node": "^2.0.0",
-        "pip-clients-blobs-node": "git+ssh://git@github.com:pip-services-content/pip-clients-blobs-node.git"
+        "pip-clients-blobs-node": "git+ssh://git@github.com:pip-services-infrastructure/pip-clients-blobs-node.git"
     },
     "devDependencies": {
         "@types/node": "*",
