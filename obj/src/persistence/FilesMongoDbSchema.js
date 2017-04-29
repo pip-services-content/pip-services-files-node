@@ -7,7 +7,7 @@ exports.FilesMongoDbSchema = function (collection) {
     let schema = new mongoose_1.Schema({
         /* Identification */
         _id: { type: String, unique: true },
-        group: { type: String, required: true },
+        group: { type: String, required: false },
         name: { type: String, required: true },
         /* Content */
         description: { type: String, required: false },

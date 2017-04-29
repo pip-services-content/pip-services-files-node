@@ -8,7 +8,7 @@ export let FilesMongoDbSchema = function(collection?: string) {
         {
             /* Identification */
             _id: { type: String, unique: true },
-            group: { type: String, required: true },
+            group: { type: String, required: false },
             name: { type: String, required: true },
 
             /* Content */
