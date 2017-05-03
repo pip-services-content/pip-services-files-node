@@ -2,10 +2,28 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 let _ = require('lodash');
 const pip_services_commons_node_1 = require("pip-services-commons-node");
+const pip_services_commons_node_2 = require("pip-services-commons-node");
+const pip_services_commons_node_3 = require("pip-services-commons-node");
 const pip_services_data_node_1 = require("pip-services-data-node");
 class FilesMemoryPersistence extends pip_services_data_node_1.IdentifiableMemoryPersistence {
     constructor() {
         super();
+    }
+    getGroups(correlationId, paging, callback) {
+        let items = _.map(this._items, (item) => item.group);
+        items = _.uniq(items);
+        // Extract a page
+        paging = paging != null ? paging : new pip_services_commons_node_2.PagingParams();
+        let skip = paging.getSkip(-1);
+        let take = paging.getTake(this._maxPageSize);
+        let total = null;
+        if (paging.total)
+            total = items.length;
+        if (skip > 0)
+            items = _.slice(items, skip);
+        items = _.take(items, take);
+        let page = new pip_services_commons_node_3.DataPage(items, total);
+        callback(null, page);
     }
     matchString(value, search) {
         if (value == null && search == null)

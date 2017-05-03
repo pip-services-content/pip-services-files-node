@@ -18,6 +18,38 @@ export class FilesMongoDbPersistence
         super('files', FilesMongoDbSchema());
     }
 
+    public getGroups(correlationId: string, paging: PagingParams,
+        callback: (err: any, page: DataPage<string>) => void): void {
+        
+        // Extract a page
+        paging = paging != null ? paging : new PagingParams();
+        let skip = paging.getSkip(-1);
+        let take = paging.getTake(this._maxPageSize);
+
+        let filter = { };
+        let options = { group: 1 };
+        
+        this._model.find(filter, options, (err, items) => {
+            if (items != null) {
+                items = _.map(items, (item) => item.group);
+                items = _.uniq(items);
+            
+                let total = null;
+                if (paging.total)
+                    total = items.length;
+                
+                if (skip > 0)
+                    items = _.slice(items, skip);
+                items = _.take(items, take);
+                        
+                let page = new DataPage<string>(items, total);
+                callback(null, page);
+            } else {
+                callback(err, null);
+            }
+        });
+    }
+
     private composeFilter(filter: FilterParams): any {
         filter = filter || new FilterParams();
 

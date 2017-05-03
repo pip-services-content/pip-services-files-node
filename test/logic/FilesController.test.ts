@@ -86,6 +86,19 @@ suite('FilesController', ()=> {
                     }
                 );
             },
+        // Get groups
+            (callback) => {
+                controller.getGroups(
+                    null, null, 
+                    (err, page) => {
+                        assert.isNull(err);
+
+                        assert.lengthOf(page.data, 1);
+
+                        callback();
+                    }
+                );
+            },
         // Delete file
             (callback) => {
                 controller.deleteFileById(

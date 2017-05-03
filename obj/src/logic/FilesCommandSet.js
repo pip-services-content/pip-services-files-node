@@ -14,12 +14,20 @@ class FilesCommandSet extends pip_services_commons_node_1.CommandSet {
     constructor(logic) {
         super();
         this._logic = logic;
+        this.addCommand(this.makeGetGroupsCommand());
         this.addCommand(this.makeGetFilesByFilterCommand());
         this.addCommand(this.makeGetFilesByIdsCommand());
         this.addCommand(this.makeGetFileByIdCommand());
         this.addCommand(this.makeCreateFileCommand());
         this.addCommand(this.makeUpdateFileCommand());
         this.addCommand(this.makeDeleteFileByIdCommand());
+    }
+    makeGetGroupsCommand() {
+        return new pip_services_commons_node_2.Command("get_groups", new pip_services_commons_node_5.ObjectSchema(true)
+            .withOptionalProperty('paging', new pip_services_commons_node_9.PagingParamsSchema()), (correlationId, args, callback) => {
+            let paging = pip_services_commons_node_4.PagingParams.fromValue(args.get("paging"));
+            this._logic.getGroups(correlationId, paging, callback);
+        });
     }
     makeGetFilesByFilterCommand() {
         return new pip_services_commons_node_2.Command("get_files_by_filter", new pip_services_commons_node_5.ObjectSchema(true)

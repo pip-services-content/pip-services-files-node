@@ -23,6 +23,7 @@ export class FilesCommandSet extends CommandSet {
 
         this._logic = logic;
 
+		this.addCommand(this.makeGetGroupsCommand());
 		this.addCommand(this.makeGetFilesByFilterCommand());
 		this.addCommand(this.makeGetFilesByIdsCommand());
 		this.addCommand(this.makeGetFileByIdCommand());
@@ -30,6 +31,18 @@ export class FilesCommandSet extends CommandSet {
 		this.addCommand(this.makeUpdateFileCommand());
 		this.addCommand(this.makeDeleteFileByIdCommand());
     }
+
+	private makeGetGroupsCommand(): ICommand {
+		return new Command(
+			"get_groups",
+			new ObjectSchema(true)
+				.withOptionalProperty('paging', new PagingParamsSchema()),
+			(correlationId: string, args: Parameters, callback: (err: any, result: any) => void) => {
+				let paging = PagingParams.fromValue(args.get("paging"));
+				this._logic.getGroups(correlationId, paging, callback);
+			}
+		);
+	}
 
 	private makeGetFilesByFilterCommand(): ICommand {
 		return new Command(

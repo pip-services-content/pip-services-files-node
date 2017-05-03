@@ -50,6 +50,8 @@ class FileV1 {
 }
 
 interface IFileV1 {
+    getGroups(correlationId: string, paging: PagingParams,
+        callback: (err: any, page: DataPage<string>) => void): void;
     getFilesByFilter(correlationId: string, filter: FilterParams, paging: PagingParams,
         callback: (err: any, page: DataPage<FileV1>) => void): void;
     getFilesByIds(correlationId: string, fileIds: string[],

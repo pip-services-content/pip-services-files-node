@@ -3,6 +3,7 @@ import { IFilesController } from './IFilesController';
 export declare class FilesCommandSet extends CommandSet {
     private _logic;
     constructor(logic: IFilesController);
+    private makeGetGroupsCommand();
     private makeGetFilesByFilterCommand();
     private makeGetFilesByIdsCommand();
     private makeGetFileByIdCommand();

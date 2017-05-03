@@ -7,6 +7,9 @@ import { IWriter } from 'pip-services-data-node';
 import { FileV1 } from '../data/version1/FileV1';
 
 export interface IFilesPersistence extends IGetter<FileV1, string>, IWriter<FileV1, string> {
+    getGroups(correlationId: string, paging: PagingParams,
+        callback: (err: any, page: DataPage<string>) => void): void;
+
     getPageByFilter(correlationId: string, filter: FilterParams, paging: PagingParams,
         callback: (err: any, page: DataPage<FileV1>) => void): void;
 

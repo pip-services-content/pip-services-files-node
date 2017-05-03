@@ -8,6 +8,7 @@
 * **seneca** Seneca service and plugin
 * **lambda** AWS lambda service
 * **unit tests** Unit tests using Mocha and Matcha
+* Added integration with Facet search to retrieve file groups
 
 #### Breaking Changes
 No breaking changes since this is the first version

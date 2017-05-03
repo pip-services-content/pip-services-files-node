@@ -78,6 +78,21 @@ export class FilesPersistenceFixture {
                     }
                 );
             },
+        // Get all groups
+            (callback) => {
+                this._persistence.getGroups(
+                    null,
+                    new PagingParams(),
+                    (err, groups) => {
+                        assert.isNull(err);
+                        
+                        assert.isObject(groups);
+                        assert.lengthOf(groups.data, 1);
+
+                        callback();
+                    }
+                );
+            },
         // Get the file
             (callback) => {
                 this._persistence.getOneById(
