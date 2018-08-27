@@ -64,7 +64,7 @@ suite('FilesHttpServiceV1', ()=> {
                     null, 'test', 'file-1.dat',  'Test file', '111'
                 );
 
-                rest.post('/files/create_file',
+                rest.post('/v1/files/create_file',
                     {
                         file: file
                     },
@@ -82,7 +82,7 @@ suite('FilesHttpServiceV1', ()=> {
             (callback) => {
                 file1.name = 'new_file.dat';
 
-                rest.post('/files/update_file',
+                rest.post('/v1/files/update_file',
                     {
                         file: file1
                     },
@@ -98,7 +98,7 @@ suite('FilesHttpServiceV1', ()=> {
             },
         // Get files
             (callback) => {
-                rest.post('/files/get_files_by_filter',
+                rest.post('/v1/files/get_files_by_filter',
                     {
                     },
                     (err, req, res, page) => {
@@ -112,7 +112,7 @@ suite('FilesHttpServiceV1', ()=> {
             },
         // Delete file
             (callback) => {
-                rest.post('/files/delete_file_by_id',
+                rest.post('/v1/files/delete_file_by_id',
                     {
                         file_id: file1.id
                     },
@@ -124,7 +124,7 @@ suite('FilesHttpServiceV1', ()=> {
             },
         // Try to get deleted file
             (callback) => {
-                rest.post('/files/get_file_by_id',
+                rest.post('/v1/files/get_file_by_id',
                     {
                         file_id: file1.id
                     },

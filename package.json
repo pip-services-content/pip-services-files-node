@@ -12,13 +12,13 @@
     "main": "./obj/src/index.js",
     "typings": "./obj/src/index.d.ts",
     "keywords": [
-        "pip.services", 
+        "pip.services",
         "files",
         "s3",
         "microservice"
     ],
     "noAnalyze": true,
-    "repository" : {
+    "repository": {
         "type": "git",
         "url": "ssh://git@github.com:pip-services-content/pip-services-files-net.git"
     },
@@ -38,10 +38,14 @@
         "rebenchmark": "tsc && matcha -R clean -I tdd ./obj/benchmark/run.js"
     },
     "dependencies": {
-        "pip-services-commons-node": "^2.0.0",
-        "pip-services-container-node": "^2.0.0",
-        "pip-services-data-node": "^2.0.0",
-        "pip-services-net-node": "^2.0.0",
+        "pip-services-commons-node": "^3.0.0",
+        "pip-services-components-node": "^3.0.0",
+        "pip-services-container-node": "^3.0.0",
+        "pip-services-data-node": "^3.0.0",
+        "pip-services-aws-node": "^3.0.0",
+        "pip-services-rpc-node": "^3.0.0",
+        "pip-services-mongodb-node": "^3.0.0",
+        "pip-services-seneca-node": "^3.0.0",
         "pip-clients-blobs-node": "git+ssh://git@github.com:pip-services-infrastructure/pip-clients-blobs-node.git",
         "pip-clients-facets-node": "git+ssh://git@github.com:pip-services-infrastructure/pip-clients-facets-node.git"
     },

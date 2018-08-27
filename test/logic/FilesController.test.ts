@@ -5,7 +5,7 @@ let assert = require('chai').assert;
 import { Descriptor } from 'pip-services-commons-node';
 import { ConfigParams } from 'pip-services-commons-node';
 import { References } from 'pip-services-commons-node';
-import { ConsoleLogger } from 'pip-services-commons-node';
+import { ConsoleLogger } from 'pip-services-components-node';
 import { IdGenerator } from 'pip-services-commons-node';
 
 import { FileV1 } from '../../src/data/version1/FileV1';
@@ -23,7 +23,7 @@ suite('FilesController', ()=> {
         let logger = new ConsoleLogger();
 
         let references: References = References.fromTuples(
-            new Descriptor('pip-services-commons', 'logger', 'console', 'default', '1.0'), logger,
+            new Descriptor('pip-services', 'logger', 'console', 'default', '1.0'), logger,
             new Descriptor('pip-services-files', 'persistence', 'memory', 'default', '1.0'), persistence,
             new Descriptor('pip-services-files', 'controller', 'default', 'default', '1.0'), controller,
         );

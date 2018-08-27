@@ -4,7 +4,7 @@ import { FilterParams } from 'pip-services-commons-node';
 import { PagingParams } from 'pip-services-commons-node';
 import { DataPage } from 'pip-services-commons-node';
 import { AnyValueMap } from 'pip-services-commons-node';
-import { IdentifiableMongoDbPersistence } from 'pip-services-data-node';
+import { IdentifiableMongoDbPersistence } from 'pip-services-mongodb-node';
 
 import { FileV1 } from '../data/version1/FileV1';
 import { IFilesPersistence } from './IFilesPersistence';
