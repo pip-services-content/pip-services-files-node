@@ -1,14 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 let async = require('async');
-const pip_services_commons_node_1 = require("pip-services-commons-node");
-const pip_services_commons_node_2 = require("pip-services-commons-node");
-const pip_services_commons_node_3 = require("pip-services-commons-node");
-const pip_services_commons_node_4 = require("pip-services-commons-node");
+let _ = require('lodash');
+const pip_services3_commons_node_1 = require("pip-services3-commons-node");
+const pip_services3_commons_node_2 = require("pip-services3-commons-node");
+const pip_services3_commons_node_3 = require("pip-services3-commons-node");
+const pip_services3_commons_node_4 = require("pip-services3-commons-node");
 const FilesCommandSet_1 = require("./FilesCommandSet");
 class FilesController {
     constructor() {
-        this._dependencyResolver = new pip_services_commons_node_2.DependencyResolver(FilesController._defaultConfig);
+        this._dependencyResolver = new pip_services3_commons_node_2.DependencyResolver(FilesController._defaultConfig);
         this._facetsGroup = 'files';
     }
     configure(config) {
@@ -32,7 +33,7 @@ class FilesController {
             this._facetsClient.getFacetsByGroup(correlationId, this._facetsGroup, paging, (err, page) => {
                 if (page != null) {
                     let data = _.map(page.data, (facet) => facet.group);
-                    let result = new pip_services_commons_node_3.DataPage(data, page.total);
+                    let result = new pip_services3_commons_node_3.DataPage(data, page.total);
                     callback(err, result);
                 }
                 else {
@@ -40,6 +41,7 @@ class FilesController {
                 }
             });
         }
+        // Otherwise retrieve groups directly. But that is going to be VERY slow. Don't use it in production!
         else {
             this._persistence.getGroups(correlationId, paging, callback);
         }
@@ -64,7 +66,7 @@ class FilesController {
     }
     createFile(correlationId, file, callback) {
         let newFile;
-        file.id = file.id || pip_services_commons_node_4.IdGenerator.nextLong();
+        file.id = file.id || pip_services3_commons_node_4.IdGenerator.nextLong();
         file.name = this.normalizeName(file.name);
         file.create_time = new Date();
         async.series([
@@ -151,6 +153,6 @@ class FilesController {
         });
     }
 }
-FilesController._defaultConfig = pip_services_commons_node_1.ConfigParams.fromTuples('dependencies.persistence', 'pip-services-files:persistence:*:*:1.0', 'dependencies.blobs', 'pip-services-blobs:client:*:*:1.0', 'dependencies.facets', 'pip-clients-facets:client:*:*:1.0', 'options.facets_group', 'files');
+FilesController._defaultConfig = pip_services3_commons_node_1.ConfigParams.fromTuples('dependencies.persistence', 'pip-services-files:persistence:*:*:1.0', 'dependencies.blobs', 'pip-services-blobs:client:*:*:1.0', 'dependencies.facets', 'pip-clients-facets:client:*:*:1.0', 'options.facets_group', 'files');
 exports.FilesController = FilesController;
 //# sourceMappingURL=FilesController.js.map

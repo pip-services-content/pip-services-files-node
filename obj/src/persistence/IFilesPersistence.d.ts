@@ -1,8 +1,8 @@
-import { FilterParams } from 'pip-services-commons-node';
-import { PagingParams } from 'pip-services-commons-node';
-import { DataPage } from 'pip-services-commons-node';
-import { IGetter } from 'pip-services-data-node';
-import { IWriter } from 'pip-services-data-node';
+import { FilterParams } from 'pip-services3-commons-node';
+import { PagingParams } from 'pip-services3-commons-node';
+import { DataPage } from 'pip-services3-commons-node';
+import { IGetter } from 'pip-services3-data-node';
+import { IWriter } from 'pip-services3-data-node';
 import { FileV1 } from '../data/version1/FileV1';
 export interface IFilesPersistence extends IGetter<FileV1, string>, IWriter<FileV1, string> {
     getGroups(correlationId: string, paging: PagingParams, callback: (err: any, page: DataPage<string>) => void): void;

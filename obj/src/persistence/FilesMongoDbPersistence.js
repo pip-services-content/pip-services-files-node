@@ -1,18 +1,18 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 let _ = require('lodash');
-const pip_services_commons_node_1 = require("pip-services-commons-node");
-const pip_services_commons_node_2 = require("pip-services-commons-node");
-const pip_services_commons_node_3 = require("pip-services-commons-node");
-const pip_services_mongodb_node_1 = require("pip-services-mongodb-node");
+const pip_services3_commons_node_1 = require("pip-services3-commons-node");
+const pip_services3_commons_node_2 = require("pip-services3-commons-node");
+const pip_services3_commons_node_3 = require("pip-services3-commons-node");
+const pip_services3_mongodb_node_1 = require("pip-services3-mongodb-node");
 const FilesMongoDbSchema_1 = require("./FilesMongoDbSchema");
-class FilesMongoDbPersistence extends pip_services_mongodb_node_1.IdentifiableMongoDbPersistence {
+class FilesMongoDbPersistence extends pip_services3_mongodb_node_1.IdentifiableMongoDbPersistence {
     constructor() {
         super('files', FilesMongoDbSchema_1.FilesMongoDbSchema());
     }
     getGroups(correlationId, paging, callback) {
         // Extract a page
-        paging = paging != null ? paging : new pip_services_commons_node_2.PagingParams();
+        paging = paging != null ? paging : new pip_services3_commons_node_2.PagingParams();
         let skip = paging.getSkip(-1);
         let take = paging.getTake(this._maxPageSize);
         let filter = {};
@@ -27,7 +27,7 @@ class FilesMongoDbPersistence extends pip_services_mongodb_node_1.IdentifiableMo
                 if (skip > 0)
                     items = _.slice(items, skip);
                 items = _.take(items, take);
-                let page = new pip_services_commons_node_3.DataPage(items, total);
+                let page = new pip_services3_commons_node_3.DataPage(items, total);
                 callback(null, page);
             }
             else {
@@ -36,7 +36,7 @@ class FilesMongoDbPersistence extends pip_services_mongodb_node_1.IdentifiableMo
         });
     }
     composeFilter(filter) {
-        filter = filter || new pip_services_commons_node_1.FilterParams();
+        filter = filter || new pip_services3_commons_node_1.FilterParams();
         let criteria = [];
         let search = filter.getAsNullableString('search');
         if (search != null) {

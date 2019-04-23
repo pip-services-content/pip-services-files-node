@@ -1,4 +1,4 @@
-import { StringValueMap } from 'pip-services-commons-node';
+import { StringValueMap } from 'pip-services3-commons-node';
 export declare class FileV1 {
     constructor(id: string, group: string, name: string, description?: string, content_id?: string, content_uri?: string, expire_time?: Date, attributes?: StringValueMap);
     id: string;

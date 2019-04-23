@@ -1,6 +1,6 @@
 let process = require('process');
 
-import { ConfigParams } from 'pip-services-commons-node';
+import { ConfigParams } from 'pip-services3-commons-node';
 
 import { FilesMongoDbPersistence } from '../../src/persistence/FilesMongoDbPersistence';
 import { FilesPersistenceFixture } from './FilesPersistenceFixture';
