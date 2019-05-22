@@ -4,11 +4,11 @@ let _ = require('lodash');
 const pip_services3_commons_node_1 = require("pip-services3-commons-node");
 const pip_services3_commons_node_2 = require("pip-services3-commons-node");
 const pip_services3_commons_node_3 = require("pip-services3-commons-node");
-const pip_services3_mongodb_node_1 = require("pip-services3-mongodb-node");
-const FilesMongoDbSchema_1 = require("./FilesMongoDbSchema");
-class FilesMongoDbPersistence extends pip_services3_mongodb_node_1.IdentifiableMongoDbPersistence {
+const pip_services3_mongoose_node_1 = require("pip-services3-mongoose-node");
+const FilesMongooseSchema_1 = require("./FilesMongooseSchema");
+class FilesMongoDbPersistence extends pip_services3_mongoose_node_1.IdentifiableMongoosePersistence {
     constructor() {
-        super('files', FilesMongoDbSchema_1.FilesMongoDbSchema());
+        super('files', FilesMongooseSchema_1.FilesMongooseSchema());
     }
     getGroups(correlationId, paging, callback) {
         // Extract a page

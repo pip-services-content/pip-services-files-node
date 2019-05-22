@@ -4,18 +4,18 @@ import { FilterParams } from 'pip-services3-commons-node';
 import { PagingParams } from 'pip-services3-commons-node';
 import { DataPage } from 'pip-services3-commons-node';
 import { AnyValueMap } from 'pip-services3-commons-node';
-import { IdentifiableMongoDbPersistence } from 'pip-services3-mongodb-node';
+import { IdentifiableMongoosePersistence } from 'pip-services3-mongoose-node';
 
 import { FileV1 } from '../data/version1/FileV1';
 import { IFilesPersistence } from './IFilesPersistence';
-import { FilesMongoDbSchema } from './FilesMongoDbSchema';
+import { FilesMongooseSchema } from './FilesMongooseSchema';
 
 export class FilesMongoDbPersistence 
-    extends IdentifiableMongoDbPersistence<FileV1, string> 
+    extends IdentifiableMongoosePersistence<FileV1, string> 
     implements IFilesPersistence {
 
     constructor() {
-        super('files', FilesMongoDbSchema());
+        super('files', FilesMongooseSchema());
     }
 
     public getGroups(correlationId: string, paging: PagingParams,
